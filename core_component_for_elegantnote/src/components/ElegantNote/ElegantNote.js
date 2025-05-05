@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import NoteList from './NoteList';
 import NoteEditor from './NoteEditor';
+import ThemeToggle from './ThemeToggle';
+import { ThemeProvider, useTheme } from './ThemeContext';
 import './ElegantNote.css';
 
 // PUBLIC_INTERFACE
-function ElegantNote() {
+function ElegantNoteContent() {
   /**
-   * Main component for ElegantNote functionality.
+   * Main content component for ElegantNote functionality.
    * Manages notes state and operations.
    */
   const [notes, setNotes] = useState([]);
   const [selectedNoteId, setSelectedNoteId] = useState(null);
+  const { isDark } = useTheme();
 
   const createNote = () => {
     const newNote = {
@@ -42,11 +45,14 @@ function ElegantNote() {
   const selectedNote = notes.find(note => note.id === selectedNoteId);
 
   return (
-    <div className="elegant-note">
+    <div className={`elegant-note ${isDark ? 'theme-dark' : 'theme-light'}`}>
       <div className="elegant-note__sidebar">
-        <button className="elegant-note__new-button btn" onClick={createNote}>
-          New Note
-        </button>
+        <div style={{ display: 'flex', padding: '16px', alignItems: 'center' }}>
+          <button className="btn elegant-note__new-button" onClick={createNote}>
+            New Note
+          </button>
+          <ThemeToggle />
+        </div>
         <NoteList
           notes={notes}
           selectedNoteId={selectedNoteId}
@@ -67,6 +73,18 @@ function ElegantNote() {
         )}
       </div>
     </div>
+  );
+}
+
+// PUBLIC_INTERFACE
+function ElegantNote() {
+  /**
+   * Root component that provides theme context.
+   */
+  return (
+    <ThemeProvider>
+      <ElegantNoteContent />
+    </ThemeProvider>
   );
 }
 

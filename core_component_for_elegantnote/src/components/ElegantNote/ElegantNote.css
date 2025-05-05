@@ -1,18 +1,59 @@
+:root {
+  /* Dark theme variables */
+  --dark-bg: #1A1A1A;
+  --dark-sidebar-bg: rgba(255, 255, 255, 0.03);
+  --dark-text: #ffffff;
+  --dark-text-secondary: rgba(255, 255, 255, 0.7);
+  --dark-border: rgba(255, 255, 255, 0.1);
+  --dark-hover: rgba(255, 255, 255, 0.05);
+  --dark-selected: rgba(232, 122, 65, 0.1);
+
+  /* Light theme variables */
+  --light-bg: #ffffff;
+  --light-sidebar-bg: #f5f5f5;
+  --light-text: #333333;
+  --light-text-secondary: #666666;
+  --light-border: #e0e0e0;
+  --light-hover: #f0f0f0;
+  --light-selected: rgba(232, 122, 65, 0.1);
+
+  /* Common variables */
+  --kavia-orange: #E87A41;
+}
+
+/* Theme toggle styles */
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+  margin-left: auto;
+}
+
+.theme-toggle:hover {
+  background-color: var(--hover);
+}
+
 /* ElegantNote Container */
 .elegant-note {
   display: flex;
   height: calc(100vh - 64px);
   margin-top: 64px;
-  background-color: var(--kavia-dark);
+  background-color: var(--bg);
+  transition: background-color 0.3s ease;
 }
 
 /* Sidebar Styles */
 .elegant-note__sidebar {
   width: 300px;
-  border-right: 1px solid var(--border-color);
+  border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: var(--sidebar-bg);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .elegant-note__new-button {
@@ -27,19 +68,20 @@
 
 .note-list__item {
   padding: 16px;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border);
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  transition: background-color 0.3s ease;
 }
 
 .note-list__item:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--hover);
 }
 
 .note-list__item--selected {
-  background-color: rgba(232, 122, 65, 0.1);
+  background-color: var(--selected);
 }
 
 .note-list__item-content {
@@ -50,7 +92,7 @@
   margin: 0;
   font-size: 1rem;
   font-weight: 500;
-  color: var(--text-color);
+  color: var(--text);
 }
 
 .note-list__item-date {
@@ -69,7 +111,7 @@
 }
 
 .note-list__delete-button:hover {
-  color: var(--text-color);
+  color: var(--text);
 }
 
 /* Note Editor Styles */
@@ -77,7 +119,8 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: var(--kavia-dark);
+  background-color: var(--bg);
+  transition: background-color 0.3s ease;
 }
 
 .note-editor {
@@ -92,9 +135,10 @@
   border: none;
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--text-color);
+  color: var(--text);
   margin-bottom: 16px;
   padding: 0;
+  transition: color 0.3s ease;
 }
 
 .note-editor__title:focus {
@@ -107,9 +151,10 @@
   border: none;
   font-size: 1rem;
   line-height: 1.5;
-  color: var(--text-color);
+  color: var(--text);
   resize: none;
   padding: 0;
+  transition: color 0.3s ease;
 }
 
 .note-editor__content:focus {
@@ -123,4 +168,25 @@
   justify-content: center;
   color: var(--text-secondary);
   font-size: 1.1rem;
+}
+
+/* Theme-specific styles */
+.theme-dark {
+  --bg: var(--dark-bg);
+  --sidebar-bg: var(--dark-sidebar-bg);
+  --text: var(--dark-text);
+  --text-secondary: var(--dark-text-secondary);
+  --border: var(--dark-border);
+  --hover: var(--dark-hover);
+  --selected: var(--dark-selected);
+}
+
+.theme-light {
+  --bg: var(--light-bg);
+  --sidebar-bg: var(--light-sidebar-bg);
+  --text: var(--light-text);
+  --text-secondary: var(--light-text-secondary);
+  --border: var(--light-border);
+  --hover: var(--light-hover);
+  --selected: var(--light-selected);
 }
