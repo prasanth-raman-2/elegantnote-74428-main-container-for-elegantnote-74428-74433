@@ -1,0 +1,126 @@
+/* ElegantNote Container */
+.elegant-note {
+  display: flex;
+  height: calc(100vh - 64px);
+  margin-top: 64px;
+  background-color: var(--kavia-dark);
+}
+
+/* Sidebar Styles */
+.elegant-note__sidebar {
+  width: 300px;
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.elegant-note__new-button {
+  margin: 16px;
+}
+
+/* Note List Styles */
+.note-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.note-list__item {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.note-list__item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.note-list__item--selected {
+  background-color: rgba(232, 122, 65, 0.1);
+}
+
+.note-list__item-content {
+  flex: 1;
+}
+
+.note-list__item-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.note-list__item-date {
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.note-list__delete-button {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.note-list__delete-button:hover {
+  color: var(--text-color);
+}
+
+/* Note Editor Styles */
+.elegant-note__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--kavia-dark);
+}
+
+.note-editor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+.note-editor__title {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 16px;
+  padding: 0;
+}
+
+.note-editor__title:focus {
+  outline: none;
+}
+
+.note-editor__content {
+  flex: 1;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  resize: none;
+  padding: 0;
+}
+
+.note-editor__content:focus {
+  outline: none;
+}
+
+.elegant-note__empty-state {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
